@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <style>body { text-align: center; } canvas { border: 1px solid black; margin: auto;}</style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <script type="text/javascript" src="helpers.js"></script>
+        <script>
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext('2d'),
+                angle = 0,
+                radians = 0,
+                radius = 200,
+                centerX = canvas.width/2,
+                centerY = canvas.height / 2;
+
+                (function draw() {
+                    window.requestAnimationFrame(draw, canvas);
+                    context.clearRect(0, 0, canvas.width, canvas.height)
+                    angle += 1
+                    radians = angle * Math.PI / 360
+                    context.save()
+                    context.beginPath()
+                    context.arc(centerX, centerY, radius, 0, Math.PI*2, true)
+                    context.moveTo(centerX, centerY)
+                    context.lineTo(centerX+Math.cos(radians)*radius, centerY-Math.sin(radians)*radius)
+                    context.lineTo(centerX+Math.cos(radians)*radius, centerY)
+                    context.lineTo(centerX, centerY)
+                    context.stroke()
+                    context.closePath()
+                    context.restore()
+                })();
+
+        </script>
+    </body>
+</html>

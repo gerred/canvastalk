@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <style>body { text-align: center; } canvas { border: 1px solid black; margin: auto;}</style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <script type="text/javascript" src="tilemap.js"></script>
+        <script type="text/javascript" src="helpers.js"></script>
+        <script>
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext('2d'),
+                tileSize = 64,
+                tilemap = new Tilemap("tiles.png", tileSize);
+
+                (function draw() {
+                    window.requestAnimationFrame(draw, canvas);
+                    context.clearRect(0, 0, canvas.width, canvas.height)
+
+                    for (var i = 0; i < 5; i++) {
+                        for (var j = 0; j < 6; j++) {
+                            var tileAtIndex = tilemap.tileAtIndex(0)
+                            context.drawImage(
+                                tilemap.image, 
+                                tileAtIndex * tileSize,
+                                0,
+                                tileSize,
+                                tileSize,
+                                tileSize*i,
+                                tileSize*j,
+                                tileSize,
+                                tileSize)
+                        }
+                    }
+                })()
+        </script>
+    </body>
+</html>

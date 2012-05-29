@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <style>body { text-align: center; } canvas { border: 1px solid black; margin: auto;}</style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext('2d'),
+                image = new Image();
+
+                image.src = "placekitten.jpeg"
+                image.onload = function() {
+                    context.drawImage(image, 0, 0)
+
+                    imageData = context.getImageData(0, 0, 500, 500)
+                    pixels = imageData.data
+                    for (var i = 0; i < pixels.length; i += 4) {
+                        average = (pixels[i] + pixels[i+1] + pixels[i+2])/3;
+                        pixels[i] = average;
+                        pixels[i+1] = average;
+                        pixels[i+2] = average;
+                    }
+
+                    context.putImageData(imageData, 0, 0)
+                }
+        </script>
+    </body>
+</html>

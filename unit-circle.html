@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <style>body { text-align: center; } canvas { border: 1px solid black; margin: auto;}</style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext('2d'),
+                angle = Math.PI/6,
+                radius = 200,
+                centerX = canvas.width/2,
+                centerY = canvas.height / 2
+
+                context.save()
+                context.beginPath()
+                context.arc(centerX, centerY, radius, 0, Math.PI*2, true)
+                context.moveTo(centerX, centerY)
+                context.lineTo(centerX+Math.cos(angle)*radius, centerY-Math.sin(angle)*radius)
+                context.lineTo(centerX+Math.cos(angle)*radius, centerY)
+                context.lineTo(centerX, centerY)
+                context.stroke()
+                context.closePath()
+                context.restore()
+        </script>
+    </body>
+</html>

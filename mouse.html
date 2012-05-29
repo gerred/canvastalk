@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <style>body { text-align: center; } canvas { border: 1px solid black; margin: auto;}</style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <div>
+            X:
+            <span id="xPos"></span>
+            Y:
+            <span id="yPos"></span>
+        </div>
+        <script type='text/javascript' src='helpers.js'></script>
+        <script>
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext('2d');
+
+                canvas.addEventListener('mousemove', function(e) {
+                    mousePos = helpers.getMouse(e, canvas);
+                    document.getElementById("xPos").innerHTML = mousePos.x
+                    document.getElementById("yPos").innerHTML = mousePos.y
+                }, true)
+        </script>
+    </body>
+</html>

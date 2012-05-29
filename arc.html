@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <style>body { text-align: center; } canvas { border: 1px solid black; margin: auto;}</style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext('2d');
+
+                context.beginPath()
+                context.arc(canvas.width/2, canvas.height/2, 50, 0, Math.PI / 4, false)
+                context.fillStyle = '#00FF00'
+                context.fill()
+                context.lineWidth = 2
+                context.stroke()
+                context.closePath()
+        </script>
+    </body>
+</html>

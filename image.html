@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <style>body { text-align: center; } canvas { border: 1px solid black; margin: auto;}</style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext('2d'),
+                image = new Image();
+
+                image.src = "placekitten.jpeg"
+                image.onload = function() {
+                    context.drawImage(image, 0, 0)
+                }
+        </script>
+    </body>
+</html>

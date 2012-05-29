@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <style>body { text-align: center; } canvas { border: 1px solid black; margin: auto;}</style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <script type="text/javascript" src="helpers.js"></script>
+        <script type="text/javascript" src="ball.js"></script>
+        <script>
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext('2d'),
+                ball = new Ball(),
+                angle = Math.PI / 3;
+
+                ball.xPos = 0+ball.radius;
+                ball.yPos = canvas.height-ball.radius;
+
+                ball.draw(context);
+
+                (function draw() {
+                    window.requestAnimationFrame(draw, canvas);
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    ball.xPos += Math.cos(angle)*10;
+                    ball.yPos -= Math.sin(angle)*10;
+                    ball.draw(context);
+                })()
+        </script>
+    </body>
+</html>

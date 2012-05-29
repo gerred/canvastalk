@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <style>body { text-align: center; } canvas { border: 1px solid black; margin: auto;}</style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <div>
+            X:
+            <span id="xPos"></span>
+            Y:
+            <span id="yPos"></span>
+        </div>
+        <script type='text/javascript' src='helpers.js'></script>
+        <script>
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext('2d'),
+                lastX, lastY;
+
+                canvas.addEventListener('mousemove', function(e) {
+                    mousePos = helpers.getMouse(e, canvas);
+                    document.getElementById("xPos").innerHTML = mousePos.x
+                    document.getElementById("yPos").innerHTML = mousePos.y
+                    if (context.lastX && context.lastY) {
+                        context.save()
+                        context.moveTo(lastX, lastY)
+                        context.lineTo(mousePos.x, mousePos.y)
+                        context.lastX = mousePos.x
+                        context.lastY = mousePos.y
+                        context.stroke()    
+                        context.restore()
+                    } else {
+                        context.lastX = mousePos.x
+                        context.lastY = mousePos.y
+                    }
+                }, true)
+        </script>
+    </body>
+</html>
