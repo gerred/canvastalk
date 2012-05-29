@@ -11,8 +11,8 @@
                 context = canvas.getContext('2d'),
                 ball = new Ball(),
                 mouseX = canvas.width/2, mouseY = canvas.height/2,
-                accel = 0.002,
-                friction = 0.01,
+                accel = 0.05,
+                friction = 0.95,
                 vX = 0,
                 vY = 0;
 
@@ -43,7 +43,7 @@
                     // decay the velocity by using the friction parameter
                     vX *= friction;
                     vY *= friction;
-                    
+
                 })()
 
                 canvas.addEventListener('mousemove', function(e) {
